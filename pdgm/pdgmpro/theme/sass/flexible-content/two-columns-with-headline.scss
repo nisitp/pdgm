@@ -1,0 +1,42 @@
+.fc-two-columns-with-headline { 
+	background-color: $brand-light-gray;
+	
+	&__inner , &__content{
+        @include row();
+    }	
+	&__headline{
+		padding-top: 60px;
+		h3{
+			font-size: 1.4em;
+			margin: 0px 0px 10px 0px;
+			text-align: center;
+	        @media #{$breakpoint-md-up} {
+	            font-size: 1.9em;
+	            margin-bottom: 20px;
+	        }	
+		}
+	}
+	@media #{$breakpoint-md-up} {
+    
+        margin-bottom: 10px;
+
+        
+        
+        &__left,
+        &__right {
+            @include col();
+            margin-left: 0px;
+            margin-bottom: 0px;
+			background-color: $brand-light-gray;
+			padding-right: 30px;
+            > section {
+                margin-left: 0px;
+                margin-bottom: 0px;
+                background-color: transparent;
+            }
+        }
+	}
+}
+
+
+

@@ -1,0 +1,132 @@
+.fc-tabbed-content {
+    background-color: $brand-light-gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+
+    &__container {
+        @include row();
+    }
+
+    &__inner {
+        @include col();
+    }
+
+    &__title {
+        font-size: 1.5em;
+        max-width: 300px;
+        margin: 0px auto 30px auto;
+        text-align: center;
+    }
+
+    &__desc {
+        font-size: 1em;
+        line-height: 1.4em;
+        max-width: 300px;
+        margin: 0px auto 30px auto;
+        text-align: center;
+    }
+
+    &__tabs {
+        @include row(true);
+
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__tab {
+        @include col();
+        
+        font-size: 1em;
+        font-weight: 700;
+        text-decoration: none;
+        color: inherit;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-left: 0px;
+        margin-right: 0px;
+
+        &:first-child {
+            margin-left: 10px;
+        }
+        &:last-child {
+            margin-right: 10px;
+        }
+
+        @media #{$breakpoint-sm-up} {
+            font-size: 1.2em;
+        }
+
+        &:first-child {
+            text-align: left;
+        }
+
+        &:last-child {
+            text-align: right;
+        }
+
+        &--active {
+            color: $brand-orange;
+        }
+
+        > .fa {
+            margin-left: 0px;
+
+            @media #{$breakpoint-sm-up} {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    &__tab-content {
+        position: relative;
+        background-color: $brand-dark-gray;
+        padding: 10px;
+        margin-top: 30px;
+
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+
+        > ul {
+            margin: 0;
+        }
+
+        &--arr0:after {
+            left: 60px;
+        }
+
+        &--arr1:after {
+            left: 50%;
+        }
+
+        &--arr2:after {
+            left: calc(100% - 50px);
+        }
+
+        &:after {
+            bottom: 100%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: rgba(0, 0, 0, 0);
+            border-bottom-color: $brand-dark-gray;
+            border-width: 15px;
+            margin-left: -15px;
+            transition: all 200ms ease;
+        }
+    }
+
+    &__tab-content-inner {
+        display: none;
+
+        &--active {
+            display: block;
+        }
+    }
+}

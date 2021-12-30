@@ -1,0 +1,153 @@
+// Site header
+
+header#masthead {
+	border-bottom: 4px solid #006747;
+	background: white;
+}
+
+.site-header {
+	padding: 1em;
+
+	&.featured-image {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 90vh;
+
+		.site-branding-container {
+			margin-bottom: auto;
+		}
+	}
+
+	@include media(tablet) {
+		margin: 0;
+		padding: 1.5rem 0;
+
+		&.featured-image {
+			min-height: 100vh;
+			margin-bottom: 3rem;
+		}
+	}
+}
+
+// Site branding
+
+.site-branding-container {
+
+	color: $color__text-light;
+	position: relative;
+	
+	
+	@include media(tablet) {
+		margin: 0 $size__site-margins;
+		
+		// HS adds for login/logout sidebar etc.
+		display: grid;
+		grid-template-columns: 3fr 9fr;
+
+		grid-template-areas: "branding nav";
+	}
+	
+ 
+  > * {
+    margin: 0 !important;
+  }
+  > .widget-area {
+    justify-self: right; 
+//    min-width: 400px;
+    position: relative;
+    z-index: 99999; // come back and clean this up later
+  }
+}
+
+
+// Site title
+
+.site-title {
+	margin: auto;
+	display: inline;
+	color: $color__text-main;
+	text-align: left;
+	
+	grid-area: branding;
+	
+	span {
+    white-space: nowrap;
+  	  font-size: 16px;
+  	  font-weight: bold;
+  	  margin-left: 50px;
+  	  font-style: italic;
+  	  display: inline-block;
+  	  @media #{$breakpoint-md-up} {
+      margin-top: 6px;
+    	  margin-left: 4vw;
+    	  font-size: 20px;
+  	  }
+	}
+	
+	a[rel=home] {  	
+	  	/* HS adds */
+	  	background-image: url(assets/images/pdgm-pro-logo.png);
+	    font-size: 0 !important;
+	    
+	    width: 204px;
+	    height: 38px;
+	    
+	    @include media(tablet) {
+/*
+	     width: 17vw;
+	     height: calc(17vw*.178); 
+*/
+        width: 17vw;
+        height: calc(17vw*.188); 
+	    }
+	    
+	    
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    display: block;
+    	
+		color: $color__text-main;
+
+		&:link,
+		&:visited {
+			color: $color__text-main;
+		}
+
+		&:hover {
+			color: $color__text-hover;
+		}
+	}
+
+	.featured-image & {
+		margin: 0;
+
+		@include media(tablet) {
+			display: inline-block;
+		}
+	}
+
+	/* When there is no description set, make sure navigation appears below title. */
+	+ .main-navigation {
+		display: block;
+	}
+
+	@include media(tablet) {
+		display: inline;
+	}
+
+	&:not(:empty) + .site-description:not(:empty):before {
+		content: "\2014";
+		margin: 0 .2em;
+	}
+}
+
+// Site description
+
+.site-description {
+
+	display: inline;
+	color: $color__text-light;
+	font-weight: normal;
+	margin: 0;
+}

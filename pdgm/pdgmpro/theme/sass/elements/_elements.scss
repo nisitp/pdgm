@@ -1,0 +1,126 @@
+html {
+	box-sizing: border-box;
+}
+
+::-moz-selection {
+	background-color: $color__background_selection;
+}
+
+::selection {
+	background-color: $color__background_selection;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: $color__background-body;
+}
+
+a {
+	@include link-transition;
+	color: $color__link;
+}
+
+a:visited {
+
+}
+
+a:hover,
+a:active {
+	color: $color__link-hover;
+	outline: 0;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: thin;
+	outline-style: dotted;
+	text-decoration: underline;
+}
+.site-title a, .site-title a:visited, #custom_html-2 a{
+  color: $color__link-hover;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	margin: $size__spacing-unit 0;
+}
+
+h1:not(.site-title),
+h2 {
+//	@include post-section-dash;
+}
+
+hr {
+	background-color: $color__text-light;
+	border: 0;
+	height: 2px;
+}
+
+@import "lists";
+
+img {
+	height: auto;
+	max-width: 100%;
+	position: relative;
+}
+
+figure {
+	margin: 0;
+}
+
+blockquote {
+	border-left: 2px solid $color__link;
+	margin-left: 0;
+	padding: 0 0 0 $size__spacing-unit;
+
+	> p {
+		margin: 0 0 $size__spacing-unit;
+	}
+
+	cite {
+		color: $color__text-light;
+	}
+}
+
+@import "tables";
+
+
+%button {
+//   margin: 20px auto 40px auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: $brand-pink;
+  color: $brand-white;
+  padding: 15px 20px 15px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;    
+    background-color: $brand-light-pink;    
+  }
+}
+
+.btn, input[type="submit"] {
+  @extend %button;
+}
+
+.btn-white {
+  border:1px solid $brand-orange;
+  color: $brand-orange;
+  background: #fff;
+  
+  &:hover {
+    background: $brand-light-orange;
+    color: $brand-white;
+  }
+}

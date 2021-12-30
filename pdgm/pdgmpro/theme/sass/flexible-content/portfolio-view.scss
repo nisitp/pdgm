@@ -1,0 +1,27 @@
+.fc-portfolio-view {
+  
+  h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  @include row();
+  
+  &__items {
+    @include row();
+    align-items: stretch;
+    
+    > div {
+      @include col(12);      
+      @include col('sm', 4);
+
+      margin-bottom: $gutter*2;
+      text-align: center;
+
+      @media #{$breakpoint-md-up} {
+          margin-bottom: 0;
+          text-align: left;
+      }      
+    }
+  }
+}

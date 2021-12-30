@@ -1,0 +1,55 @@
+version: '3.3'
+
+services:
+  pdgmdb:
+    image: mysql:5.7
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pdgm
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+
+  pdgm:
+    depends_on:
+      - pdgmdb
+    image: wordpress:latest
+#    expose:
+#      - 443
+    restart: always
+    working_dir: /var/www/html
+    environment:
+      WORDPRESS_DB_HOST: pdgmdb
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_DB_NAME: pdgm
+      VIRTUAL_HOST: pdgmpro.dev
+      VIRTUAL_PORT: 443
+      VIRTUAL_PROTO: HTTPS
+    volumes:
+      - ./theme:/var/www/html/wp-content/themes/pdgmpro
+      - ./uploads:/var/www/html/wp-content/uploads
+      - ./plugins:/var/www/html/wp-content/plugins
+      - ./mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./tool:/var/www/html/pdgmtool
+    build:      
+      context: ./docker
+      dockerfile: wordpress.dockerfile   
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links:
+      - pdgmdb:db
+    ports:
+      - 8002:80
+    environment:
+      MYSQL_USERNAME: root
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: pdgmdb   
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

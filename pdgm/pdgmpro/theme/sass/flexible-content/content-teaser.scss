@@ -1,0 +1,102 @@
+.content-teasers{
+	overflow: hidden;
+    &__inner {
+        @include row();
+        > section {
+        	@media #{$breakpoint-xs-only} {
+	        	@include col('sm', 4);
+				@include col(12);
+				margin-left: 0;
+				margin-right: 0;
+        	}
+        	
+	    	@include col();
+	    	
+            margin-left: 0px;
+            margin-bottom: 0px;
+			padding-top: 60px;
+			padding-bottom: 30px;
+			margin-bottom: 10px;
+            &:first-child {
+                padding-right: 30px;
+                @include bleed-left;
+            }
+
+            &:last-child {
+                padding-left: 30px;
+                @include bleed-right;
+            }
+            &:not(:first-child), &:not(:last-child){
+	            padding-left: 30px;
+	            padding-right: 30px;
+            }
+            &:nth-child(even){
+                background-color: $brand-light-gray;
+            }
+            &:nth-child(odd){
+                background-color: $brand-light-green;
+            } 
+            
+            .content-teaser{
+	            &__title{
+		            text-align: center;
+		            a{
+			            text-decoration: none;
+			            &:hover{
+				            text-decoration: underline;
+			            }
+		            }
+	            }
+	            &__icon {
+			        height: 70px;
+			        width: 70px;
+			        flex-basis: 70px !important;
+			        margin: 0 auto 15px auto;
+			        border-radius: 50%;
+			        //background-color: $brand-blue;
+			        font-size: 35px;
+			        line-height: 70px;
+			        color: $brand-white;
+			        text-align: center;
+			
+			        @media #{$breakpoint-sm-up} {
+			            height: 110px;
+			            width: 110px;
+			            flex-basis: 110px !important;
+			            font-size: 55px;
+			            line-height: 110px;
+			        }
+			        
+			        &.icon__orange{
+				        background-color: $brand-orange;
+			        }
+			        &.icon__light-blue{
+				        background-color: $brand-blue;
+			        }
+			        &.icon__dark-blue{
+				        background-color: $brand-dark-blue;
+			        }
+			        &.icon__dark-green{
+				        background-color: $brand-dark-green;
+			        }
+			        
+			    }
+			
+			    &__desc {
+			        font-weight: 300;
+			        margin: 0px;
+			    } 
+			    &__button{
+				    text-align: center;
+				    .button{
+						@extend %button;
+						margin: 40px auto;
+						padding: 10px 20px;
+						position: relative;
+						display: inline-block;   
+				    }
+			    }  
+        	}
+        }
+    }    
+}

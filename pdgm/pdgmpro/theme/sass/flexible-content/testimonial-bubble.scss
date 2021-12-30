@@ -1,0 +1,97 @@
+.fc-testimonial-bubble {
+    position: relative;
+    background-color: $brand-white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+
+    &__inner {
+        max-width: #{800px + 2 * 25px};
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 25px;
+        padding-right: 25px;
+
+        @include clearfix;
+    }
+
+    &__headshot {
+        height: 110px;
+        width: 110px;
+        border-radius: 50%;
+        background-color: $brand-dark-gray;
+        background-position: center;
+        background-size: cover;
+
+        @media #{$breakpoint-sm-up} {
+            height: 180px;
+            width: 180px;
+            float: left;
+        }
+    }
+    
+    &__testimonial {
+        position: relative;
+        background-color: $brand-light-green;
+        border-radius: 20px;
+        padding: 25px;
+        margin-bottom: 30px;
+
+        &:after {
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-color: transparent;
+        }
+
+        @media #{$breakpoint-xs-only} {
+            &:after {
+                left: 35px;
+                top: 100%;
+                border-top-color: $brand-light-green;
+                border-width: 20px;
+            }
+        }
+
+        @media #{$breakpoint-sm-up} {
+            float: right;
+            width: calc(100% - #{180px + 70px + 2 * 35px});
+            margin-left: 70px;
+            margin-bottom: 0px;
+            padding: 35px;
+
+            &:after {
+                right: 100%;
+                top: 35px;
+                border-right-color: $brand-light-green;
+                border-width: 30px;
+            }
+        }
+    }
+
+    &__testimonial-content {
+        margin: 0 0 10px 0;
+        line-height: 1.5em;
+    }
+
+    &__testimonial-position {
+        position: relative;
+        display: block;
+        margin: 0;
+        text-transform: uppercase;
+        color: $brand-darker-gray;
+        font-size: 0.7em;
+        line-height: 1.3em;
+        padding-left: 13px;
+
+        &:before {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            content: "— ";
+        }
+    }
+}

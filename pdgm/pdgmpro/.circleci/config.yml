@@ -1,0 +1,116 @@
+version: 2.1
+
+defaults: &defaults
+    docker:
+        - image: circleci/node:10.13.0
+    working_directory: ~/pdgmpro
+
+jobs:
+    build:
+        <<: *defaults
+        steps:
+            - checkout
+
+            - restore_cache:
+                key: yarn-cache-{{ checksum "~/pdgmpro/theme/yarn.lock" }}
+
+            - restore_cache:
+                key: node-modules-{{ checksum "~/pdgmpro/theme/yarn.lock" }}
+
+            - run:
+                name: Install Dependencies
+                working_directory: ~/pdgmpro/theme
+                command: |
+                    yarn install
+
+            - save_cache:
+                key: yarn-cache-{{ checksum "~/pdgmpro/theme/yarn.lock" }}
+                paths:
+                    - ~/.cache/yarn
+
+            - save_cache:
+                key: node-modules-{{ checksum "~/pdgmpro/theme/yarn.lock" }}
+                paths:
+                    - ~/pdgmpro/theme/node_modules
+
+            - run:
+                name: Build
+                working_directory: ~/pdgmpro/theme
+                command: |
+                    yarn build
+
+            - run:
+                name: Move things into place
+                working_directory: ~/pdgmpro
+                command: |
+                    mkdir -p ./wp-content/themes
+                    mv ./plugins ./wp-content/plugins
+                    mv ./theme ./wp-content/themes/pdgmpro
+                    mv ./tool ./pdgmtool
+
+            - run:
+                name: Update .gitignore files
+                command: |
+                    find `pwd` -name '.gitignore' -print0 | while IFS= read -r -d $'\0' file; do
+                        echo $file
+                        sed -i -e 's/# ::: //g' $file
+                        sed -i -e '/.*::: cut :::*/,$d' $file
+                    done
+
+            - persist_to_workspace:
+                root: ~/pdgmpro
+                paths: .
+
+    deploy_production:
+        <<: *defaults
+        steps:
+            - attach_workspace:
+                at: ~/pdgmpro
+
+            - deploy:
+                command: |
+                    git config --global user.email "george@hotsauceatl.com"
+                    git config --global user.name "Hot Sauce [circleci]"
+                    git clone https://pdgmpro:${livepass}@pdgmpro.com/plesk-git/pdgmpro.git tmp_remote
+                    rm -rf .git
+                    mv tmp_remote/.git .git
+                    rm -rf tmp_remote
+                    git add -A
+                    git commit -m"deploy"
+                    git push -o nolint origin master
+
+    deploy_stage:
+        <<: *defaults
+        steps:
+            - attach_workspace:
+                at: ~/pdgmpro
+
+            - deploy:
+                command: |
+                    git config --global user.email "george@hotsauceatl.com"
+                    git config --global user.name "Hot Sauce [circleci]"
+                    git clone https://hotsauce:${stagepass}@pdgmpro.hotsauceatl.com/plesk-git/pdgmpro.git tmp_remote
+                    rm -rf .git
+                    mv tmp_remote/.git .git
+                    rm -rf tmp_remote
+                    git add -A
+                    git commit -m"deploy"
+                    git push -o nolint origin master
+
+workflows:
+    version: 2
+    build_and_deploy:
+        jobs:
+            - build
+            - deploy_production:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: master
+            - deploy_stage:
+                requires:
+                    - build
+                filters:
+                    branches:
+                        only: develop

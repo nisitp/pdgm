@@ -1,0 +1,130 @@
+.entry-content {
+//  background: #E8F1F1; 
+  .fc-portfolio-view {
+    max-width: none;
+    
+    h3 {
+//      text-align: center;
+      font-size: $font__size-md;
+    }
+    &__items {
+      
+      @media #{$breakpoint-sm-up} {
+        display: grid;      
+        grid-column-gap: 20px;
+      }
+      
+      @media #{$breakpoint-md-up} {
+        grid-template-columns: repeat(3, 1fr); 
+      }
+
+    }
+  }
+}
+
+.entry-content {
+  .resource {
+    &-type {
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        color: $brand-darker-gray;
+        text-align: left;
+        font-size: $font__size-xs;
+        line-height: 1.3em;
+        font-weight: 400;
+    }
+
+    &-image {
+        text-align: center;
+        margin: 0 0 10px 0;
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &-title {
+        font-size: 1.5em;
+        margin: 0 0 10px 0;
+        text-align: left;
+        a {
+          text-decoration: none;
+          color: inherit;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+    }
+    
+    &-excerpt {
+        margin: 0 0 20px 0;
+        line-height: 1.5em; 
+        font-size: $font__size-xs;
+        font-weight: 400;
+        * {
+          font-weight: 400;
+        }        
+        > a {
+            color: $brand-pink;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    &-image-placeholder {
+      display: none;
+      width: 100%;      
+      overflow: hidden;
+      
+      margin-bottom: 10px;
+      background: $brand-dark-gray;
+
+      height: 193px;
+                  
+      @media #{$breakpoint-md-up} {
+        display: block;
+        height: 15vw;
+      }      
+      
+      .home & {
+        height: 144px;        
+      }      
+    }
+    
+    &-image-placeholder {      
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+
+      &.no-default {
+        background-image: none;
+        ::before {
+          display: block;
+          content: ' ';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: url(../images/press-thumbnail.jpg);
+          background-size: cover;
+        }
+      }
+
+      a {              
+        font-size: 0;
+        
+        // new image implementation:
+        position: relative;
+        display: block;
+        height: 100%;
+        width: 100%;
+      }          
+    }
+  }   
+}

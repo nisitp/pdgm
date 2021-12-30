@@ -1,0 +1,23 @@
+@import './hero';
+/*
+@import './two-columns';
+@import './two-columns-with-headline';
+@import './tabbed-content';
+@import './icon-list';
+@import './numbers';
+@import './testimonial-slider';
+@import './testimonial-bubble';
+@import './text-content';
+@import './content-teaser';
+@import './portfolio-view';
+@import './people_list';
+*/
+
+
+h2.fc-header {
+//  @include row();
+  padding: $gutter 0;
+  display: block;
+  text-align: center;
+}
+

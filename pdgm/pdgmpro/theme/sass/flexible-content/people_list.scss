@@ -1,0 +1,28 @@
+.fc-people {
+  @include row();
+  
+  &--inner {
+    @include col();
+    @extend %grid-with-gutter;
+    
+    @media #{$breakpoint-sm-up} {  
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media #{$breakpoint-md-up} {
+      grid-template-columns: repeat(4, 1fr);      
+    }
+  
+    .person {
+      max-width: 100%;
+      width: auto;
+      float: none;
+      
+      * {
+        max-width: 100%;      
+      }
+      img {
+        width: 100%; 
+      }
+    }
+  }
+}

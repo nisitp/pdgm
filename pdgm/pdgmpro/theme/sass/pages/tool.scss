@@ -1,0 +1,125 @@
+.page-id-2, .page-id-460 {
+  
+/*
+  .pdgm-data-wrapper {
+    filter: blur(8px);
+    max-height: 700px;
+    overflow: hidden;
+    .logged-in &  {
+      max-height: none;
+      filter: none;
+    }
+  }
+
+  .reg_form {  
+    .logged-in &  {
+      display: none;
+    }
+    
+    position: absolute;    
+    z-index: 999;
+    background: white;
+    width: 80%;
+    max-width:900px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;    
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    
+    h1 {
+      font-size: $font__size-md;
+    }
+    
+    // Hide elements since the confirmation adds junk 
+    > * {
+      display: none;
+    }
+    > div, 
+    > span.thank-you {
+      display: block;
+    }
+  }
+  
+*/
+  .warning {
+    &::before {
+      display: block;
+      content: '\f071';
+      text-align: center;
+      font-family: "Font Awesome 5 Free"; font-weight: 900; 
+      color: orange;
+    }
+    
+  }
+  
+  .legend { 
+    .warning {
+      display: inline-block;
+      width: 20px; height: 20px; 
+    }  
+  }
+  
+
+  
+  .learn-more-block {
+    
+		  @include media(tablet) {
+        display: table;    
+      }
+    
+	  .wp-block-column {
+
+		  @include media(tablet) {  	  
+    	  display: table-cell;
+        vertical-align: middle;
+      }
+//		  min-height: 500px; // to get equal heights. Will probably regret this.
+
+
+      
+      
+      padding: $gutter;
+		  @include media(tablet) {
+  		  &:nth-child(1) {
+    		  width: 50%;
+    		  border-right: $gutter solid white;
+  		  }
+			  &:nth-child(2) {
+				  padding-left: 80px;
+			  }
+		  }
+	  }
+	  
+	  .zebra-alt2 {
+      font-size: $font__size-lg;
+//       color: $brand-dark-blue;
+      color: $brand-white;
+      background: none !important;
+      line-height: 1.25;
+      
+      text-align: center;      
+      &::before {
+        background-image: url(/wp-content/themes/pdgmpro/assets/images/background-pattern-gray.png);
+        background-size:cover;
+        background-position:left center;
+        
+      }
+	  }
+  }
+  
+  .tabulator-table {
+//     background-image: url(https://www.excelhealthgroup.com/wp-content/themes/excel2018/assets/logo.png);
+    background-image: url(/wp-content/themes/pdgmpro/assets/images/Trella_Logo_Horiz.png);
+    background-size: cover;
+    color: black;
+    font-weight: bold;
+    .tabulator-row {
+      background: rgba(255,255,255,.95);
+      
+      &-even {
+        background:rgba(239,239,239, .95);
+      }
+    }
+  }
+}

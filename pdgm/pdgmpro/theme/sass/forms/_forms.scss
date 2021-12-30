@@ -1,0 +1,27 @@
+@import "buttons";
+
+@import "fields";
+
+
+.frm-password-strength {
+  font-size: .5em;  
+  & > span {
+
+    @extend %fa-icon;    
+    @extend .fas;
+    padding-right: 1em;
+    font-family: inherit;
+    &::before {
+      font-family: "Font Awesome 5 Free" !important;
+      content: '\f057';
+      color: red;            
+      font-size: 10px;
+      padding-right: 5px;
+    }
+      &.frm-pass-verified::before {
+        content: '\f058';
+        color: green;
+      }
+    
+  }
+}

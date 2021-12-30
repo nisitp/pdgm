@@ -1,0 +1,77 @@
+{
+    "key": "group_5c0658b3909c1",
+    "title": "Flexible Content - Testimonial Bubble",
+    "fields": [
+        {
+            "key": "field_5c0658b39b960",
+            "label": "Select",
+            "name": "select",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "random": "Random",
+                "latest": "Latest",
+                "manual": "Manually"
+            },
+            "allow_null": 0,
+            "default_value": "auto",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5c0658b39b997",
+            "label": "Testimonial",
+            "name": "testimonial",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c0658b39b960",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "eh_testimonial"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/page-flexible-content.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543919923
+}

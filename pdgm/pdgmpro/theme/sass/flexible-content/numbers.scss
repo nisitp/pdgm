@@ -1,0 +1,76 @@
+.fc-numbers {
+    background-color: $brand-light-gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+
+    &__inner {
+        @include row();
+        justify-content: space-between;
+    }
+
+    &__number {
+        @include col();
+
+        box-sizing: border-box;
+        border: 6px solid #000000;
+        background-color: #FFFFFF;
+        border-radius: 50%;
+        max-width: 350px;
+        max-height: 350px;
+        text-align: center;
+
+        &:nth-child(1) {
+            border-color: #3C7C6A;
+            background-color: #4B9B85;
+        }
+
+        &:nth-child(2) {
+            border-color: #9AAA43;
+            background-color: #C1D554;
+        }
+
+        &:nth-child(3) {
+            border-color: #4C92A7;
+            background-color: #5FB7D1;
+        }
+
+        &:before {
+            content: "";
+            float: left;
+            padding-top: 100%;
+        }
+    }
+
+    &__number-inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        > span.fa {
+            font-size: 7em;
+            font-size: 7vw;
+
+            @media #{$breakpoint-lg-up} {
+                font-size: 7em;
+            }
+        }
+
+        > h4,
+        > p {
+            margin: 5% 0 0 0;
+            font-size: 2em;
+            font-size: 2vw;
+
+            @media #{$breakpoint-lg-up} {
+                font-size: 2em;
+            }
+        }
+
+        > p {
+            max-width: 60%;
+            margin: 5% auto 0px auto;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+@import 'portfolio';
+
+section.full-bleed {
+  position: relative;
+  @include pseudo();
+  padding: $gutter*2;
+  background-size: 0;
+  &::before, .bg__stretched {
+    margin-left: -50vw;
+    width: 200vw;
+    background: inherit;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+.wp-block-columns.logos {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  > .wp-block-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    
+    figure {
+      max-width: 400px;
+    }
+  }
+}
+
+.print-only {
+  display: none;
+}

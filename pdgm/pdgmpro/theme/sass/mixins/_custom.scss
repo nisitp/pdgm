@@ -1,0 +1,26 @@
+/*
+@mixin row() {
+  display: grid;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  grid-gap: 20px;	
+}
+*/
+
+
+@mixin pseudo($type: 'before') {
+	position: relative;
+	
+	@each $t in $type {
+		&::#{$t} {
+			content: " ";
+			position: absolute;
+			display: block;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			z-index: -1;
+		}
+	}
+}
+

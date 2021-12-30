@@ -1,0 +1,105 @@
+{
+    "key": "group_5bfd5f5040471",
+    "title": "Flexible Content - Testimonial Slider",
+    "fields": [
+        {
+            "key": "field_5bfd5f5febbcf",
+            "label": "Select",
+            "name": "select",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto": "Automatically",
+                "manual": "Manually"
+            },
+            "allow_null": 0,
+            "default_value": "auto",
+            "layout": "horizontal",
+            "return_format": "value"
+        },
+        {
+            "key": "field_5bfd5fbaebbd0",
+            "label": "Count",
+            "name": "count",
+            "type": "number",
+            "instructions": "How many testimonials are supposed to be displayed? (-1 for unlimited)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd5f5febbcf",
+                        "operator": "==",
+                        "value": "auto"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": -1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": -1,
+            "max": "",
+            "step": 1
+        },
+        {
+            "key": "field_5bfd6057ebbd1",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5bfd5f5febbcf",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "eh_testimonial"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/page-flexible-content.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1543333420
+}
